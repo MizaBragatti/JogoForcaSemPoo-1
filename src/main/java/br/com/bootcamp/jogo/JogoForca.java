@@ -100,8 +100,9 @@ public class JogoForca {
 //		for (String s : dica) {
 //			listaEmString += s;
 //		}
-		int qtdTracos = palavraChave.length();;
-		while (qtdTracos > 0) {
+		int qtdVidas = 10;
+		int qtdTracos = palavraChave.length();
+		while (qtdVidas > 0 && qtdTracos > 0) {
 			System.out.println("Qual letra voce chuta? --> ");
 			String letraDigitada = in.next().toLowerCase();
 
@@ -109,15 +110,24 @@ public class JogoForca {
 
 			int i = 0;
 			qtdLetras = palavraChave.length();
-			
+			boolean acertou = false;
 
 			while (i < qtdLetras) {
 				if (listaLetrasCorretas[i].equals(letraDigitada)) {
 					dica[i] = letraDigitada;
 					qtdTracos--;
+					acertou = true;
 				}
 				i++;
+
 			}
+			if (!acertou) {
+				qtdVidas--;
+				System.out.println("Você tem "+qtdVidas+" de vidas.");
+			}
+			
+			
+			acertou = false;
 
 			String novaDica = "";
 
@@ -128,7 +138,7 @@ public class JogoForca {
 			System.out.println(novaDica);
 			// System.out.println(palavraChave);
 			// System.out.println(listaEmString);
-			
+
 		}
 		in.close();
 
