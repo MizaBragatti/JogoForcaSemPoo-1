@@ -94,37 +94,42 @@ public class JogoForca {
 
 		// Aqui estamos exibindo nossa palavra chave na tela pra saber se nossa logica
 		// esta funcionando
-		String listaEmString = "";
+//		String listaEmString = "";
 		montaDica(palavraChave.length());
-		
-		for (String s : dica) {
-			listaEmString += s;
-		}
+//		
+//		for (String s : dica) {
+//			listaEmString += s;
+//		}
+		int qtdTracos = palavraChave.length();;
+		while (qtdTracos > 0) {
+			System.out.println("Qual letra voce chuta? --> ");
+			String letraDigitada = in.next().toLowerCase();
 
-		System.out.println("Qual letra voce chuta? --> ");
-		String letraDigitada = in.next().toLowerCase();
+			String[] listaLetrasCorretas = palavraChave.split("");
 
-		String[] listaLetrasCorretas = palavraChave.split("");
+			int i = 0;
+			qtdLetras = palavraChave.length();
+			
 
-		int i = 0;
-		qtdLetras = palavraChave.length();
-
-		while (i < qtdLetras) {
-			if (listaLetrasCorretas[i].equals(letraDigitada)) {
-				dica[i] = letraDigitada;
+			while (i < qtdLetras) {
+				if (listaLetrasCorretas[i].equals(letraDigitada)) {
+					dica[i] = letraDigitada;
+					qtdTracos--;
+				}
+				i++;
 			}
-			i++;
+
+			String novaDica = "";
+
+			for (String s : dica) {
+				novaDica += s;
+			}
+
+			System.out.println(novaDica);
+			// System.out.println(palavraChave);
+			// System.out.println(listaEmString);
+			
 		}
-		
-		String novaDica = "";
-		
-		for (String s : dica) {
-			novaDica += s;
-		}
-		
-		System.out.println(novaDica);
-		//System.out.println(palavraChave);
-		//System.out.println(listaEmString);
 		in.close();
 
 	}
